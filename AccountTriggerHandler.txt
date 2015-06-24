@@ -1,0 +1,14 @@
+trigger accountTrigger( after update )
+{
+	Set<Id> idsToGeoLocate = new Set<Id>( );
+	for ( Account accNew : Trigger.new )
+	{
+		if ( accNew.ShippingStreet != null || accNew.shippingCity != null || accNew.ShippingCountry != null || accNew.ShippingPostalCode != null &&
+		( accNew.SVMXC__Longitude__c == null || accNew.SVMXC__Latitude__c == null ) )
+			idsToGeoLocate.add( accNew.Id );
+	}
+	if ( idsToGeoLocate.size( ) > 0 )
+	{
+		CalculateGeoLocationAndUpdateRecord.updateGeoLocation( idsToGeoLocate, 'Account', 'SVMXC__Longitude__c', 'SVMXC__Latitude__c', 'ShippingStreet', 'shippingCity', 'ShippingCountry', 'ShippingPostalCode' );
+	}
+}
