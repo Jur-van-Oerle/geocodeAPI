@@ -1,0 +1,61 @@
+public with sharing class googleMapsResponse
+{  
+	public list<results> results                          {get;set;}
+	public String status                                  {get;set;}
+	public String error_message                           {get;set;}
+
+	public class bounds
+	{
+		public northeast northeast                          {get;set;}
+		public southwest southwest                          {get;set;}
+	}
+  
+	public class viewport
+	{
+		public northeast northeast                          {get;set;}
+		public southwest southwest                          {get;set;}
+	}
+  
+	public class results
+	{
+		public list<String> types                           {get;set;}
+		public String formatted_address                     {get;set;}
+		public list<address_components> address_components  {get;set;}
+		public geometry geometry                            {get;set;}
+		public Boolean partial_match                        {get;set;}
+		public String place_id                              {get;set;}
+	}
+  
+	public class location
+	{
+		public Decimal lng                                  {get;set;}
+		public Decimal lat                                  {get;set;}
+	}
+
+	public class address_components
+	{
+		public list<String> types                           {get;set;}
+		public String short_name                            {get;set;}
+		public String long_name                             {get;set;}
+	}
+
+	public class southwest
+	{
+		public Decimal lng                                  {get;set;}
+		public Decimal lat                                  {get;set;}
+	}
+
+	public class northeast
+	{
+		public Decimal lng                                  {get;set;}
+		public Decimal lat                                  {get;set;}
+	}
+
+	public class geometry
+	{
+		public String location_type                         {get;set;}
+		public viewport viewport                            {get;set;}
+		public location location                            {get;set;}
+		public bounds bounds                                {get;set;}
+	}
+}
