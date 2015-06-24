@@ -29,7 +29,7 @@ public class CalculateGeoLocationAndUpdateRecord
             String country  = ( String )sObj.get( countryAPI_Name );
             String zip      = ( String )sObj.get( zipAPI_Name );
      
-            String url              = Label.GeoApiEndpoint + 'json?address=' + sanitizeLocation( street, city, country, zip ) + '&key=' + Label.GeoApiKeyMassUpdate;
+            String url      = Label.GeoApiEndpoint + 'json?address=' + sanitizeLocation( street, city, country, zip ) + '&key=' + Label.GeoApiKeyMassUpdate;
             googleMapsResponse res  = requestGeoLocation( url );
             
             if ( res.results.size( ) == 0 )
@@ -60,7 +60,6 @@ public class CalculateGeoLocationAndUpdateRecord
     {
         String result               = '';
         List<String> addressFields  = new List<String>( );
-        
         
         if ( street != null && street != '' )
         {
