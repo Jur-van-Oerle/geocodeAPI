@@ -41,7 +41,6 @@ public class CalculateGeoLocationAndUpdateRecord
             sObj.put( latitudeAPI_Name, loc.lat );
         }
         update sobjList;
-        System.Debug( 'updating...: ' + sobjList );
     }
     
     private static googleMapsResponse requestGeoLocation( String url )
