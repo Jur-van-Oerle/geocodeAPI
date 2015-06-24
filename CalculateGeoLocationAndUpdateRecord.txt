@@ -1,141 +1,95 @@
-<p>
-	<style type="text/css">
-p{padding:0; margin:0}
-		.container	{font-family:Arial, Helvetica, sans-serif; font-size:12px; margin:0 auto; width:100%}
-		.logo-title	{overflow:hidden}
-		.logo-title .title-txt {float:left; width:50%; padding:30px 0 0 0; font-size:12px; text-transform:uppercase; text-align:right}
-		.logo-title .logo {float:left; width:50%;}	
-		
-		.address-container {clear:both; position:relative; line-height:4px; text-align:right}
-		.title{clear:both; text-align:center; font-size:22px; line-height:10px}
-		
-		.address-to-for {border:1px solid #000; clear:both; margin:15px 0 0 0}
-		.address-to-for .address-to-for-container {width:100%; overflow:hidden; background:#f2f2f2}
-		.address-to-for-container .block {width:50%; float:left}
-		.address-to-for-container .block .header {background:#AEACB5; padding:5px; font-weight:bold; border-bottom:1px solid #000; color:#FFF}
-		.address-to-for-container .block .content {padding:5px; line-height:4px}
-			
-		.workorder-details table, .part-details table {border-collapse: collapse; margin:20px 0 0 0}
-		.workorder-details table th, .workorder-details table td, .part-details table th, .part-details table td {border: 1px solid #000; padding: 5px; text-align: left; white-space: normal; background:#f2f2f2}
-		.workorder-details table th, .part-details table th {background:#AEACB5; color:#FFF; text-align:left; text-transform:uppercase;}	
-		.part-details table th.theader {background:#f2f2f2; color:#000; text-transform:capitalize}
-		.part-details table tr td {background:#fff;}
-		.part-details tfoot tr td{font-weight:bold; background:#f2f2f2}
-				
-		.footer {clear:both; width:100%; margin:40px 0 30px;}
-		.footer strong {font-size:18px;}
-		td { padding:5px; text-align:left; }
-		
-		.table_position
-		{
-			paddig-right:10%;
-			font-size:12px;
-			font-family: "Arial","Arial Unicode MS","Sans-Serif";
-			table-layout:fixed;
-			margin-top:15px;
-			margin-bottom:15px;
-			float:left;
-			vertical-align:top; 
-			position:relative;
-			width:100%;
-			page-break-inside: avoid; !important
-		}	</style>
-</p>
-<script>
-	function getQuantity( quantityString )
-	{
-		if ( quantityString == "" || quantityString == null )
-			return "1";
-		else return quantityString;
-	}
-</script>
-<div class="main-container">
-	<div>
-		<div class="logo-title">
-			<div class="logo">
-				&nbsp;</div>
-			<div class="title-txt">
-				<p>
-					<img alt="Xtandit Logo" src="" svmx-data="{{$F.IMAGE('Logo')}}" width="297" /><br />
-					<br />
-					<strong>Xtandit BV</strong></p>
-				<p>
-					<strong>{{$F.ADDRESS()}}</strong></p>
-			</div>
-		</div>
-		<div class="title">
-			<b>Bouwbon</b></div>
-		<div class="address-container">
-			<strong>DATE</strong>: {{$F.TODAY()}}</div>
-		<p>
-			&nbsp;</p>
-		<div class="header" style="padding: 5px; font-weight: bold; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; background: rgb(174, 172, 181);">
-			PROD NAME:{{$D.Installed_Product.Name}}</div>
-		<div>
-			<table align="left" border="0" cellpadding="0" cellspacing="0" style="border-style:hidden;background-color:#e6e6fa; width:100%;">
-				<thead>
-					<tr>
-						<td valign="top">
-							<p style="text-align: left; margin-top:0px;">
-								<span style="font-size:10px;"><strong>{{$D.Installed_Product.SVMXC__Company__c.Name}}</strong></span><br />
-								<span style="font-size:10px;">{{$D.Installed_Product.SVMXC__Street__c}}</span><br />
-								<span style="font-size:10px;">{{$D.Installed_Product.SVMXC__City__c}}</span><br />
-								<span style="font-size:10px;">{{$D.Installed_Product.SVMXC__Zip__c}}</span></p>
-						</td>
-						<td width="65%">
-							<p>
-								<span style="font-size:10px;"><strong>Productinformatie:</strong><br />
-								{{$D.Installed_Product.Name}}</span><br />
-								<span style="font-size:10px;"><strong>{{$M.Installed_Product.Product_Code__c.label}}:</strong>&nbsp;{{$D.Installed_Product.SVMXC__Product__c.ProductCode}}</span><br />
-								<span style="font-size:10px;"><strong>{{$M.Installed_Product.Navision_Machine_Nummer__c.label}}:</strong>&nbsp;{{$D.Installed_Product.Navision_Machine_Nummer__c}}</span><br />
-								<span style="font-size:10px;"><strong>{{$M.Installed_Product.Navision_Article_Number__c.label}}:</strong>&nbsp;{{$D.Installed_Product.Navision_Article_Number__c}}</span><br />
-								<span style="font-size:10px;"><strong>{{$M.Installed_Product.SVMXC__Status__c.label}}:</strong>&nbsp;{{$D.Installed_Product.SVMXC__Status__c}}</span></p>
-							<p>
-								<span style="font-size:10px;"><strong>{{$M.Installed_Product.Build_Work_Order__c.Shipping_Comments__c.label}}: </strong><br />
-								{{$D.Installed_Product.Shipping_Comments__c}} </span></p>
-							<p>
-								<span style="font-size:10px;"><strong>{{$M.Installed_Product.Build_Work_Order__c.Special_Delivery_Needs__c.label}}: </strong><br />
-								{{$D.Installed_Product.Build_Work_Order__c.Special_Delivery_Needs__c}}</span></p>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<h3>
-								<strong>{{$M.Installed_Product.Expected_Delivery_Date__c.label}}:</strong>&nbsp;{{$D.Installed_Product.Expected_Delivery_Date__c}}</h3>
-							<p>
-								<span style="font-size:10px;">{{$M.Installed_Product.Planned_build_date__c.label}}:&nbsp;{{$D.Installed_Product.Planned_build_date__c}}<br />
-								{{$M.Installed_Product.Planned_install_date__c.label}}: {{$D.Installed_Product.Planned_install_date__c}}<br />
-								<br />
-								{{$M.Installed_Product.Planned_shipping_date__c.label}}:&nbsp;{{$D.Installed_Product.Planned_shipping_date__c}}<br />
-								{{$M.Installed_Product.SVMXC__Date_Shipped__c.label}}:&nbsp;{{$D.Installed_Product.SVMXC__Date_Shipped__c}}</span></p>
-						</td>
-					</tr>
-				</thead>
-			</table>
-		</div>
-		<div class="table_position" style="page-break-inside:avoid; !important">
-			<p style="text-align: center;">
-				&nbsp;</p>
-			<p style="text-align: center;">
-				<strong>ACCESSOIRES</strong></p>
-			<table border="1" cellpadding="0" cellspacing="0" style="margin-top:-0.25%;" svmx-data="{{$D.Installed_Product__Top_Level_}}" width="100%">
-				<thead>
-					<tr>
-						<th class="theader" style="white-space: nowrap; width: 12%; text-align: left;" svmx-data="{{$D.Installed_Product__Top_Level_.Product_Code__c}}">
-							Artikelnaam:</th>
-						<th class="theader" style="white-space: nowrap; width: 12%; text-align: left;" svmx-data="{{$D.Installed_Product__Top_Level_.SVMXC__Product_Name__c}}">
-							Omschrijving:</th>
-						<th class="theader" style="white-space: nowrap; width: 12%; text-align: left;" svmx-data="{{$F.FORMAT(getQuantity($D.Installed_Product__Top_Level_.Navision_Quantity__c))}}">
-							Aantal:</th>
-					</tr>
-				</thead>
-			</table>
-		</div>
-		<p>
-			&nbsp;</p>
-	</div>
-	<p>
-		&nbsp;</p>
-</div>
-<p>
-	&nbsp;</p>
+public class CalculateGeoLocationAndUpdateRecord 
+{
+    @future(callout=true) public static void updateGeoLocation( Set<Id> allIds, String objectAPI_Name, String longitudeAPI_Name, String latitudeAPI_Name, String streetAPI_Name, String cityAPI_Name, String countryAPI_Name, String zipAPI_Name )
+    {
+        Set<Id> objectsToUpdate = new Set<Id>( );
+        Integer i = 0;
+        for ( Id idToUpdate : allIds )
+        {
+            if ( i > 9 || idToUpdate == null )
+            {
+               break;
+            }
+            objectsToUpdate.add( idToUpdate );
+            ++i;
+        }
+        
+        String placeHolder      = 'SELECT Id, {0}, {1}, {2}, {3}, {4}, {5} FROM {6}';
+        List<String> fillers    = new List<String>{ longitudeAPI_Name, latitudeAPI_Name, streetAPI_Name, cityAPI_Name, countryAPI_Name, zipAPI_Name, objectAPI_Name };
+        String soqlQuery        = String.format( placeHolder, fillers );
+        
+        soqlQuery               += ' WHERE Id IN : ' + 'objectsToUpdate';
+        List<sObject> sobjList  = Database.query( soqlQuery );
+        
+        System.Debug( 'the actual objects to geoLocate: ' + sobjList );
+        for ( sObject sObj : sobjList )
+        {
+            String street   = ( String )sObj.get( streetAPI_Name );
+            String city     = ( String )sObj.get( cityAPI_Name );
+            String country  = ( String )sObj.get( countryAPI_Name );
+            String zip      = ( String )sObj.get( zipAPI_Name );
+     
+            String url              = Label.GeoApiEndpoint + 'json?address=' + sanitizeLocation( street, city, country, zip ) + '&key=' + Label.GeoApiKeyMassUpdate;
+            googleMapsResponse res  = requestGeoLocation( url );
+            
+            if ( res.results.size( ) == 0 )
+                continue;
+            
+            googleMapsResponse.location loc = res.results[0].geometry.location;
+            
+            sObj.put( longitudeAPI_Name, loc.lng );
+            sObj.put( latitudeAPI_Name, loc.lat );
+        }
+        update sobjList;
+        System.Debug( 'updating...: ' + sobjList );
+    }
+    
+    private static googleMapsResponse requestGeoLocation( String url )
+    {
+        Http h              = new Http( );
+        HttpRequest req     = new HTTPRequest( );
+        req.setEndPoint( url );
+        req.setMethod( 'GET' );
+        
+        HttpResponse res    = h.send( req );
+        System.Debug( 'the response from Google: ' + res.getBody( ) );
+        return ( googleMapsResponse )JSON.deserialize( res.getBody( ), googleMapsResponse.class );
+    }
+    
+    private static String sanitizeLocation( String street, String city, String country, String zip )
+    {
+        String result               = '';
+        List<String> addressFields  = new List<String>( );
+        
+        
+        if ( street != null && street != '' )
+        {
+            addressFields.add( street );
+        }
+        
+        if ( city != null && city != '' )
+        {
+            addressFields.add( city );
+        }
+        
+        if ( country != null && country != '' )
+        {
+            addressFields.add( country );
+        }
+        
+        if ( zip != null && zip != '' )
+        {
+            addressFields.add( zip );
+        }
+        
+        for ( Integer i = 0; i < addressFields.size( ); ++i )
+        {
+            result += addressFields[i];
+            if ( i != addressFields.size( ) - 1 )
+            {
+                result += ', ';
+            }
+        }
+        return result.replace( ' ', '%20' );
+    }
+}
